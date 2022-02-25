@@ -126,7 +126,11 @@ void main(List<String> arguments) {
     }
     print('want to do anything else?(y/n)');
     String state = stdin.readLineSync()!;
-    if (state.toLowerCase() == 'n') break;
+    if (state.toLowerCase() == 'y') {
+      continue;
+    } else {
+      break;
+    }
   }
   print('Thank you \u2764');
 }
