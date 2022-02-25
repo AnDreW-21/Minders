@@ -50,30 +50,24 @@ List<Map> selectionSort(List<Map> person, int n) {
   return list;
 }
 
-int binarySearch(List<Map> person, int n, String name) {
-  int left = 0;
-  int right = n - 1;
-  while (left <= right) {
-    int m = (left + (right - left) / 2).toInt();
-    if (name == (person[m]['name'])) {
-      return m;
+int binarySearch(List<Map> person,int left,int right, String name) {
+  if (right >= left) {
+    int mid = (left + (right - left) / 2).toInt();
+    if (name == (person[mid]['name'])) {
+      return mid;
     }
-
-    // If x greater, ignore left half
-    if (person[m]['name'] < name) {
-      left = m + 1;
-    } else {
-      right = m - 1;
+    if ({person[mid]['name'].compareTo(name)}==1) {
+      return binarySearch(person, left, mid - 1, name);
     }
+    return binarySearch(person, mid + 1, right, name);
   }
-
   return -1;
 }
 
 void main(List<String> arguments) {
   List<Map> person = [
-    {'id': 3, 'name': 'Andrew', 'age': '20', 'faculty': 'FCAI'},
-    {'id': 2, 'name': 'Nossa', 'age': '22', 'faculty': 'AUC'}
+    {'id': 3, 'name': 'andrew', 'age': '20', 'faculty': 'FCAI'},
+    {'id': 2, 'name': 'nossa', 'age': '22', 'faculty': 'AUC'}
   ];
   while (true) {
     startSystem();
@@ -106,13 +100,15 @@ void main(List<String> arguments) {
         }
         break;
       case 4:
+        print("Enter your name");
         String name = stdin.readLineSync()!;
+        List<Map> sortedList=List.from(selectionSort(person, person.length));
         int index = binarySearch(
-            selectionSort(person, person.length), person.length - 1, name);
+            sortedList,0,person.length-1, name);
         if (index == -1) {
           print("NOT FOUND");
         } else {
-          print(person[index]);
+          print(sortedList[index]);
         }
         break;
       case 5:
