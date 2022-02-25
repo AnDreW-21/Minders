@@ -34,7 +34,7 @@ void deleteMember(int id, List<Map> person) {
 }
 
 List<Map> selectionSort(List<Map> person, int n) {
-  List<Map> list=person;
+  List<Map> list = List.from(person);
   int min;
   for (int i = 0; i < n - 1; i++) {
     min = i;
@@ -43,9 +43,9 @@ List<Map> selectionSort(List<Map> person, int n) {
         min = j;
       }
     }
-    Map damy = list[min];
+    Map dummy = list[min];
     list[min] = list[i];
-    list[i] = damy;
+    list[i] = dummy;
   }
   return list;
 }
