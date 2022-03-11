@@ -32,7 +32,7 @@ class Employee extends Person {
       String name, int age, int phone, int salary, String sction, bool isAttend)
       : super(name, age, phone, salary, sction, isAttend);
 
-  void addTask(Task task) {
+  void addMyTask(Task task) {
     tasks.add(task);
   }
 
@@ -40,7 +40,7 @@ class Employee extends Person {
     print(tasks);
   }
 
-  void deliverTask(Task task) {
+  void deliverMyTask(Task task) {
     task.changeState();
   }
 
@@ -77,7 +77,7 @@ class Manger extends Person {
   }
 
   void addTask(Employee employee, Task task) {
-    employee.addTask(task);
+    employee.addMyTask(task);
   }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
